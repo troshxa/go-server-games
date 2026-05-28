@@ -1,0 +1,21 @@
+meta {
+  name: Patch Game
+  type: http
+  seq: 5
+}
+
+patch {
+  url: http://localhost:8080/games/{{id}}
+  body: json
+  auth: none
+}
+
+vars:pre-request {
+  id: your-uuid-here
+}
+
+body:json {
+  {
+    "price": 9.99
+  }
+}

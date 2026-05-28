@@ -1,0 +1,15 @@
+meta {
+  name: Get Game By Id
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8080/games/{{id}}
+  body: none
+  auth: none
+}
+
+vars:pre-request {
+  id: your-uuid-here
+}
