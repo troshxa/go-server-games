@@ -24,9 +24,12 @@ func main() {
 
 	r := chi.NewRouter()
 
+	r.Get("/games", gameHandler.GetAll)
 	r.Get("/games/{id}", gameHandler.GetById)
-
 	r.Post("/games", gameHandler.CreateGame)
+	r.Put("/games/{id}", gameHandler.UpdateGame)
+	r.Patch("/games/{id}", gameHandler.PatchGame)
+	r.Delete("/games/{id}", gameHandler.DeleteGame)
 
 	log.Fatal(http.ListenAndServe(":8080", r))
 }
