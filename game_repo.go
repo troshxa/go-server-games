@@ -47,7 +47,7 @@ func (r *gameRepo) GetAll(ctx context.Context) ([]*Game, error) {
 	}
 	defer rows.Close()
 
-	var games []*Game
+	games := make([]*Game, 0)
 	for rows.Next() {
 		p := &Game{}
 		if err := rows.Scan(&p.ID, &p.Title, &p.ReleaseDate, &p.Price, &p.Rating, &p.CreatedAt); err != nil {
