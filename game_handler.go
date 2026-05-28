@@ -52,6 +52,10 @@ func (h *GameHandler) CreateGame(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Price must be a positive number", http.StatusBadRequest)
 		return
 	}
+	if p.Rating < 0 || p.Rating > 10 {
+		http.Error(w, "Rating must be between 0 and 10", http.StatusBadRequest)
+		return
+	}
 
 	err = h.repo.CreateGame(r.Context(), &p)
 	if err != nil {
